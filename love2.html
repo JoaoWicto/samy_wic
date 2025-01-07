@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Álbum de Fotos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Ajuste para o conteúdo iniciar no topo */
+            background: radial-gradient(circle, #1a002a, #000000 70%);
+            color: white;
+            text-align: center;
+            overflow-y: auto; /* Habilita o scrolling */
+            position: relative;
+            min-height: 100vh; /* Garante que a página ocupe pelo menos a altura da tela */
+            padding-top: 50px; /* Espaço superior para o título e texto */
+        }
+
+        /* Texto especial no canto superior esquerdo */
+        .love-text {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff69b4;
+            text-shadow: 1px 1px 10px rgba(255, 105, 180, 1);
+            z-index: 20;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin: 100px 0 50px 0; /* Ajuste para maior espaçamento no topo */
+            z-index: 20;
+        }
+
+        .photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            width: 90%;
+            max-width: 1200px;
+            z-index: 10;
+            margin-bottom: 100px; /* Espaço adicional na parte inferior */
+        }
+
+        .photos img, .photos video {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .back-button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff69b4;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            z-index: 20;
+        }
+
+        .back-button:hover {
+            background-color: #c2185b;
+        }
+
+        /* Estrelas no fundo */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Distribuição das estrelas */
+        .star:nth-child(1) { top: 10%; left: 15%; animation-duration: 2s; }
+        .star:nth-child(2) { top: 20%; left: 40%; animation-duration: 3s; }
+        .star:nth-child(3) { top: 30%; left: 70%; animation-duration: 2.5s; }
+        .star:nth-child(4) { top: 40%; left: 10%; animation-duration: 3s; }
+        .star:nth-child(5) { top: 50%; left: 50%; animation-duration: 1.8s; }
+        .star:nth-child(6) { top: 60%; left: 80%; animation-duration: 2.7s; }
+        .star:nth-child(7) { top: 70%; left: 30%; animation-duration: 3.2s; }
+        .star:nth-child(8) { top: 80%; left: 60%; animation-duration: 2.9s; }
+        .star:nth-child(9) { top: 90%; left: 20%; animation-duration: 3.1s; }
+        .star:nth-child(10) { top: 5%; left: 90%; animation-duration: 1.6s; }
+        .star:nth-child(11) { top: 15%; left: 25%; animation-duration: 2.2s; }
+        .star:nth-child(12) { top: 35%; left: 75%; animation-duration: 2.4s; }
+        .star:nth-child(13) { top: 55%; left: 15%; animation-duration: 3s; }
+        .star:nth-child(14) { top: 75%; left: 55%; animation-duration: 2.3s; }
+        .star:nth-child(15) { top: 85%; left: 45%; animation-duration: 3.4s; }
+    </style>
+</head>
+<body>
+    <!-- Texto especial -->
+    <div class="love-text">Eu te amo muito amor ❤️</div>
+
+    <!-- Estrelas no fundo -->
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+
+    <h1>Meu Álbum de Fotos 2023</h1>
+    <div class="photos">
+        <img src="IMG_20230612_102114_598.jpg" alt="Foto 1">
+        <img src="IMG_20230330_113246_580.jpg" alt="Foto 2">
+        <img src="IMG_20230417_091727_145.jpg" alt="Foto 3">
+        <img src="IMG_20230428_093257_408.jpg" alt="Foto 4">
+        <img src="IMG_20230605_180636_663.jpg" alt="Foto 5">
+        <img src="IMG_20230607_162934_774.jpg" alt="Foto 6">
+        <img src="IMG_20230522_111616_669.jpg" alt="Foto 7">
+        <video controls src="lv_7160901058011729158_20230410222649.mp4"></video>
+    </div>
+    <a href="love1.html" class="back-button">Voltar</a>
+
+    <script>
+        // Função para embaralhar a ordem das fotos
+        function shuffleImages() {
+            const photosContainer = document.querySelector('.photos');
+            const photos = Array.from(photosContainer.children);
+            for (let i = photos.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [photos[i], photos[j]] = [photos[j], photos[i]];
+            }
+            photosContainer.innerHTML = '';
+            photos.forEach(photo => photosContainer.appendChild(photo));
+        }
+
+        // Chama a função de embaralhamento ao carregar a página
+        window.onload = shuffleImages;
+
+        // Seleciona todos os vídeos na página
+        const videos = document.querySelectorAll('video');
+        videos.forEach(video => {
+            video.addEventListener('play', () => {
+                // Pausa todos os outros vídeos ao iniciar a reprodução deste
+                videos.forEach(otherVideo => {
+                    if (otherVideo !== video) {
+                        otherVideo.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
